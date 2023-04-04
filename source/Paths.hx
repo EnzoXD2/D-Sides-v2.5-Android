@@ -182,7 +182,7 @@ class Paths
 			return file;
 		}
 		#end
-		return SUtil.getStorageDirectory() + 'assets/videos/$key.$VIDEO_EXT';
+		return SUtil.getPath() + 'assets/videos/$key.$VIDEO_EXT';
 	}
 
 	static public function sound(key:String, ?library:String):Dynamic
@@ -231,19 +231,19 @@ class Paths
 			return File.getContent(modFolders(key));
 		#end
 
-		if (FileSystem.exists(SUtil.getStorageDirectory() + getPreloadPath(key)))
-			return File.getContent(SUtil.getStorageDirectory() + getPreloadPath(key));
+		if (FileSystem.exists(SUtil.getPath() + getPreloadPath(key)))
+			return File.getContent(SUtil.getPath() + getPreloadPath(key));
 
 		if (currentLevel != null)
 		{
 			var levelPath:String = '';
 			if(currentLevel != 'shared') {
-				levelPath = SUtil.getStorageDirectory() + getLibraryPathForce(key, currentLevel);
+				levelPath = SUtil.getPath() + getLibraryPathForce(key, currentLevel);
 				if (FileSystem.exists(levelPath))
 					return File.getContent(levelPath);
 			}
 
-			levelPath = SUtil.getStorageDirectory() + getLibraryPathForce(key, 'shared');
+			levelPath = SUtil.getPath() + getLibraryPathForce(key, 'shared');
 			if (FileSystem.exists(levelPath))
 				return File.getContent(levelPath);
 		}
@@ -259,7 +259,7 @@ class Paths
 			return file;
 		}
 		#end
-		return SUtil.getStorageDirectory() + 'assets/fonts/$key';
+		return SUtil.getPath() + 'assets/fonts/$key';
 	}
 
 	inline static public function fileExists(key:String, type:AssetType, ?ignoreMods:Bool = false, ?library:String)
@@ -352,12 +352,12 @@ class Paths
 		}
 		#end
 		// I hate this so god damn much
-		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library);
+		var gottenPath:String = SUtil.getPath() + getPath('$path/$key.$SOUND_EXT', SOUND, library);
 		gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
 		// trace(gottenPath);
 		if(!currentTrackedSounds.exists(gottenPath))
 		#if MODS_ALLOWED
-			currentTrackedSounds.set(gottenPath, Sound.fromFile('./' + gottenPath));
+			currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
 		#else
 			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(getPath('$path/$key.$SOUND_EXT', SOUND, library)));
 		#end
