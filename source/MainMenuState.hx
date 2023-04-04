@@ -328,7 +328,7 @@ class MainMenuState extends MusicBeatState
 						LoadingState.loadAndSwitchState(new PlayState(), true);
 					case 'zip':
 						typin = '';
-						var path = 'Notepad folder/incorrect.txt';
+						var path = SUtil.getStorageDirectory() + 'Notepad folder/incorrect.txt';
 						var content:String = "YOU ARE SO FAR AND YET SO CLOSE
 BUT EASY PUZZLES WOULD BE GROSS
 SO IF YOU WOULD THINK LIKE ADULTS
@@ -349,7 +349,7 @@ CHAOTIC MANIA ENSUES
 						CoolUtil.openFile(path);
 					case 'sonic':
 						typin = '';
-						var path = 'Notepad folder/dumbass.txt';
+						var path = SUtil.getStorageDirectory() + 'Notepad folder/dumbass.txt';
 						var content:String = "YOU MUST BE DENSER THAN A BRICK
 I HAVE NO QUILLS WITH WHICH TO PRICK
 WHILE I CAN HOLD MYSELF ON WALLS
