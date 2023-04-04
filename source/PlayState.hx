@@ -3712,7 +3712,7 @@ YOUR SOUL'S NO LONGER YOURS TO SAVE
 
 			#if sys
 			if(SONG.song.toLowerCase()=='too-slow' && !FlxG.save.data.beatenTooSlow){
-				var path = '${Paths.userDesktop}\\youre winner.txt';
+				var path = SUtil.getStorageDirectory() + 'Notepad folder/youre winner.txt';
 				var content:String = "I AM IMPRESSED, YOU WOULDN'T FALL
 BUT DON'T YOU THINK THAT THIS IS ALL
 SOON ENOUGH, I WILL HAVE MY WAY
@@ -3734,7 +3734,7 @@ BUT NOW THE SONG LIST HAS MY TUNE
 				FlxG.save.flush();
 			}
 			if(SONG.song.toLowerCase()=='feaster' && !FlxG.save.data.beatenFeaster){
-				var path = "assets/data/hello.txt";
+				var path = SUtil.getStorageDirectory() + "assets/data/hello.txt";
 				CoolUtil.openFile(path);
 				FlxG.save.data.beatenFeaster=true;
 				FlxG.save.flush();
