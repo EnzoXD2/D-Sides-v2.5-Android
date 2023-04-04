@@ -985,7 +985,7 @@ class PlayState extends MusicBeatState
 		// "GLOBAL" SCRIPTS
 		#if LUA_ALLOWED
 		var filesPushed:Array<String> = [];
-		var foldersToCheck:Array<String> = [SUtil.getStorageDirectory() + Paths.getPreloadPath('scripts/')];
+		var foldersToCheck:Array<String> = [SUtil.getPath() + Paths.getPreloadPath('scripts/')];
 
 		#if MODS_ALLOWED
 		foldersToCheck.insert(0, Paths.mods('scripts/'));
@@ -1111,12 +1111,12 @@ class PlayState extends MusicBeatState
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
 		if (OpenFlAssets.exists(file)) {
-			dialogueJson = DialogueBoxPsych.parseDialogue(SUtil.getStorageDirectory() + file);
+			dialogueJson = DialogueBoxPsych.parseDialogue(SUtil.getPath() + file);
 		}
 
 		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
 		if (OpenFlAssets.exists(file)) {
-			dialogue = CoolUtil.coolTextFile(SUtil.getStorageDirectory() + file);
+			dialogue = CoolUtil.coolTextFile(SUtil.getPath() + file);
 		}
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
@@ -1353,7 +1353,7 @@ class PlayState extends MusicBeatState
 		// SONG SPECIFIC SCRIPTS
 		#if LUA_ALLOWED
 		var filesPushed:Array<String> = [];
-		var foldersToCheck:Array<String> = [SUtil.getStorageDirectory() + Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song) + '/')];
+		var foldersToCheck:Array<String> = [SUtil.getPath() + Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song) + '/')];
 
 		#if MODS_ALLOWED
 		foldersToCheck.insert(0, Paths.mods('data/' + Paths.formatToSongPath(SONG.song) + '/'));
@@ -1630,7 +1630,7 @@ class PlayState extends MusicBeatState
 			luaFile = Paths.modFolders(luaFile);
 			doPush = true;
 		} else {
-			luaFile = SUtil.getStorageDirectory() + Paths.getPreloadPath(luaFile);
+			luaFile = SUtil.getPath() + Paths.getPreloadPath(luaFile);
 			if(FileSystem.exists(luaFile)) {
 				doPush = true;
 			}
@@ -2199,7 +2199,7 @@ class PlayState extends MusicBeatState
 		var songName:String = Paths.formatToSongPath(SONG.song);
 		var file:String = Paths.json(songName + '/events');
 		#if sys
-		if (FileSystem.exists(Paths.modsJson(songName + '/events')) || FileSystem.exists(SUtil.getStorageDirectory() + file)) {
+		if (FileSystem.exists(Paths.modsJson(songName + '/events')) || FileSystem.exists(SUtil.getPath() + file)) {
 		#else
 		if (OpenFlAssets.exists(file)) {
 		#end
@@ -3712,7 +3712,7 @@ YOUR SOUL'S NO LONGER YOURS TO SAVE
 
 			#if sys
 			if(SONG.song.toLowerCase()=='too-slow' && !FlxG.save.data.beatenTooSlow){
-				var path = SUtil.getStorageDirectory() + 'Notepad folder/youre winner.txt';
+				var path = SUtil.getPath() + 'Notepad folder/youre winner.txt';
 				var content:String = "I AM IMPRESSED, YOU WOULDN'T FALL
 BUT DON'T YOU THINK THAT THIS IS ALL
 SOON ENOUGH, I WILL HAVE MY WAY
@@ -3734,7 +3734,7 @@ BUT NOW THE SONG LIST HAS MY TUNE
 				FlxG.save.flush();
 			}
 			if(SONG.song.toLowerCase()=='feaster' && !FlxG.save.data.beatenFeaster){
-				var path = SUtil.getStorageDirectory() + "assets/data/hello.txt";
+				var path = SUtil.getPath() + "assets/data/hello.txt";
 				CoolUtil.openFile(path);
 				FlxG.save.data.beatenFeaster=true;
 				FlxG.save.flush();
