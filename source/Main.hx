@@ -70,6 +70,9 @@ class Main extends Sprite
 		#if !debug
 		initialState = TitleState;
 		#end
+			
+		if (!FileSystem.exists(SUtil.getStorageDirectory() + 'Notepad folder'))
+		FileSystem.createDirectory(SUtil.getStorageDirectory() + 'Notepad folder');
 	
 		ClientPrefs.loadDefaultKeys();
 		// fuck you, persistent caching stays ON during sex
