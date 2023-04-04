@@ -367,7 +367,7 @@ class Paths
 
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '') {
-		return SUtil.getStorageDirectory() + 'mods/' + key;
+		return SUtil.getPath() + 'mods/' + key;
 	}
 
 	inline static public function modsFont(key:String) {
@@ -409,7 +409,7 @@ class Paths
 				return fileToCheck;
 			}
 		}
-		return SUtil.getStorageDirectory() + 'mods/' + key;
+		return SUtil.getPath() + 'mods/' + key;
 	}
 
 	static public function getModDirectories():Array<String> {
