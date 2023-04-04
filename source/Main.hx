@@ -10,6 +10,8 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
+import sys.FileSystem;
+import sys.io.File;
 
 class Main extends Sprite
 {
